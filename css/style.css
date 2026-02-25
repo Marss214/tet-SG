@@ -1,0 +1,275 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+:root {
+    --do-tet: #D32F2F; 
+    --xanh-la: #2E7D32; 
+    --vang-mai: #FFC107; 
+    --nen-nhat: #FFF9C4; 
+}
+
+body {
+    background-color: #fafafa;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+.banner {
+  
+    background: linear-gradient(rgba(211, 47, 47, 0.75), rgba(46, 125, 50, 0.75)), url('../images/banner-tet.jpg') center/cover;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.banner h1 {
+    font-size: 3.5em;
+    color: var(--vang-mai);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    margin-bottom: 10px;
+}
+
+.banner p {
+    font-size: 1.2em;
+    letter-spacing: 1px;
+}
+
+/* Bố cục chung cho các section */
+section {
+    padding: 50px 10%;
+}
+
+.title {
+    text-align: center;
+    color: var(--do-tet);
+    margin-bottom: 25px;
+    font-size: 2.2em;
+}
+
+/* ======= BENTO GRID MENU ======= */
+.bento-container {
+    display: grid;
+    /* Chia làm 4 cột bằng nhau */
+    grid-template-columns: repeat(4, 1fr);
+    /* Chiều cao mỗi hàng mặc định là 220px */
+    grid-auto-rows: 220px;
+    gap: 15px;
+    padding: 20px 10%;
+    margin-bottom: 30px;
+}
+
+.bento-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-item:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 12px 25px rgba(211, 47, 47, 0.4); /* Bóng đổ màu đỏ */
+    z-index: 10;
+}
+
+/* Lớp mờ đen bên dưới ảnh để chữ trắng nổi lên */
+.bento-item .overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0; top: 0;
+    /* Đã xóa dòng background mờ đen cũ */
+    display: flex;
+    align-items: center;      /* Căn giữa chữ theo chiều dọc */
+    justify-content: center;  /* Căn giữa chữ theo chiều ngang */
+    padding: 20px;
+    text-align: center;
+}
+
+.bento-item h2 {
+    color: white; /* Màu mặc định là trắng */
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* Xóa bỏ text-shadow vì nền trơn đã làm chữ đủ nổi bật */
+}
+
+/* Chỉnh kích thước từng ô (Giao diện Desktop) */
+.item-large { 
+    grid-column: span 2; 
+    grid-row: span 2; 
+} 
+.item-medium { 
+    grid-column: span 2; 
+    grid-row: span 1; 
+} 
+.item-small { 
+    grid-column: span 1; 
+    grid-row: span 1; 
+} 
+.item-small:last-child {
+    grid-column: span 2; 
+}
+
+/* ======= RESPONSIVE (Cho Điện thoại & Tablet) ======= */
+@media (max-width: 900px) {
+    .bento-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .item-large, .item-medium, .item-small, .item-small:last-child {
+        grid-column: span 2; /* Tất cả thành 1 cột dài trên điện thoại */
+        grid-row: span 1;
+    }
+}
+
+
+footer {
+    background-color: var(--do-tet);
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+/* ======= TRANG LIÊN HỆ ======= */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.contact-form, .contact-map {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--do-tet);
+}
+
+.contact-map {
+    border-top: 5px solid var(--xanh-la);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--do-tet);
+    box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
+}
+
+.submit-btn {
+    width: 100%;
+    border: none;
+    font-size: 1.1em;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+/* ======= GALLERY HÌNH ẢNH ======= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.gallery-item {
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.3s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+/* ======= NÚT TRỞ VỀ ======= */
+.top-nav {
+    padding: 20px 10%;
+    background-color: var(--nen-nhat); 
+}
+
+.btn-back {
+    display: inline-block;
+    color: var(--do-tet);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 8px 20px;
+    border: 2px solid var(--do-tet);
+    border-radius: 30px; /* Bo tròn hoàn toàn tạo nét hiện đại */
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: var(--do-tet);
+    color: white;
+    transform: translateX(-8px); /* Hiệu ứng trượt nhẹ sang trái */
+    box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+}
+
+.contact-form h2 {
+    font-family: 'Playfair Display', serif; /* Font sang trọng cho tiêu đề */
+    font-size: 2.2em;
+    letter-spacing: 1px;
+}
+
+.submit-btn {
+    font-family: 'Montserrat', sans-serif; /* Font chữ hiện đại */
+    background-color: var(--do-tet);
+    color: white;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 15px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #B71C1C; /* Đỏ sậm hơn khi hover */
+    transform: translateY(-2px);
+}
+
+
+.card img {
+    width: 100%;          /* Bắt buộc ảnh phải rộng bằng 100% chiều ngang của thẻ chứa nó */
+    height: 500px;        /* Đặt một chiều cao cố định cho TẤT CẢ các ảnh */
+    object-fit: cover;    /* Đây là chìa khóa! Nó giúp ảnh tự cắt bớt phần thừa để lấp đầy khung hình mà KHÔNG BỊ MÉO */
+    object-position: top center;
+    border-radius: 8px 8px 0 0; /* (Tùy chọn) Bo tròn 2 góc trên cho đẹp */
+    margin-bottom: 15px;  /* Tạo khoảng cách giữa ảnh và tiêu đề bên dưới */
+}
